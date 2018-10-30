@@ -59,5 +59,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XGames.Domain\XGames.Domain.csproj">
+      <Project>{469BB8AB-DCEF-469B-8BCD-1357FEAAC30A}</Project>
+      <Name>XGames.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
