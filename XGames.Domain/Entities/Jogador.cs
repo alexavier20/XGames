@@ -4,10 +4,11 @@ using XGames.Domain.ValueObjects;
 using prmToolkit.NotificationPattern;
 using XGames.Domain.Resource;
 using XGames.Domain.Externsions;
+using XGames.Domain.Entities.Base;
 
 namespace XGames.Domain.Entities
 {
-    public class Jogador : Notifiable
+    public class Jogador : EntityBase
     {
         public Jogador(Email email, string senha)
         {
@@ -21,8 +22,7 @@ namespace XGames.Domain.Entities
         {
             Nome = nome;
             Email = email;
-            Senha = senha;
-            id = Guid.NewGuid();
+            Senha = senha;            
             Status = EnumStatusJogador.EmAndamento;
 
             new AddNotifications<Jogador>(this).IfNullOrInvalidLength(x => x.Senha, 6, 32,
@@ -34,7 +34,7 @@ namespace XGames.Domain.Entities
             AddNotifications(nome, email);
         }
 
-        public Guid id { get; private set; }
+       // public Guid id { get; private set; }
 
         public Nome Nome { get; private set; }
 
