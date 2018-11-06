@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{469BB8AB-DCEF-469B-8BCD-1357FEAAC30A}</ProjectGuid>
+    <ProjectGuid>{0CD23DBF-011C-4710-A253-C9E0AE040C14}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XGames.Domain</RootNamespace>
-    <AssemblyName>XGames.Domain</AssemblyName>
+    <RootNamespace>XGame.IoC</RootNamespace>
+    <AssemblyName>XGame.IoC</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -37,8 +37,23 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="prmToolkit.NotificationPattern, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\prmToolkit.NotificationPattern.1.1.2\lib\netstandard1.0\prmToolkit.NotificationPattern.dll</HintPath>
@@ -49,6 +64,10 @@
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.4.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
     </Reference>
@@ -75,6 +94,9 @@
     <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
     </Reference>
@@ -94,6 +116,9 @@
     <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -104,50 +129,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arguments\Base\ResponseBase.cs" />
-    <Compile Include="Arguments\Jogador\AdicionarJogadorRequest.cs" />
-    <Compile Include="Arguments\Jogador\AdicionarJogadorResponse.cs" />
-    <Compile Include="Arguments\Jogador\AlterarJogadorRequest.cs" />
-    <Compile Include="Arguments\Jogador\AlterarJogadorResponse.cs" />
-    <Compile Include="Arguments\Jogador\AutenticarJogadorRequest.cs" />
-    <Compile Include="Arguments\Jogador\AutenticarJogadorResponse.cs" />
-    <Compile Include="Arguments\Jogador\JogadorResponse.cs" />
-    <Compile Include="Arguments\Plataforma\AdicionarPlataformaRequest.cs" />
-    <Compile Include="Arguments\Plataforma\AdicionarPlataformaResponse.cs" />
-    <Compile Include="Entities\Base\EntityBase.cs" />
-    <Compile Include="Entities\Jogador.cs" />
-    <Compile Include="Entities\Jogo.cs" />
-    <Compile Include="Entities\JogoPlataforma.cs" />
-    <Compile Include="Entities\MeuJogo.cs" />
-    <Compile Include="Entities\Plataforma.cs" />
-    <Compile Include="Enum\EnumStatusJogador.cs" />
-    <Compile Include="Externsions\Extension.cs" />
-    <Compile Include="Interfaces\Arguments\IRequest.cs" />
-    <Compile Include="Interfaces\Arguments\IResponse.cs" />
-    <Compile Include="Interfaces\Repositories\Base\IRepositoryBase.cs" />
-    <Compile Include="Interfaces\Repositories\IRepositoryJogador.cs" />
-    <Compile Include="Interfaces\Services\Base\IServiceBase.cs" />
-    <Compile Include="Interfaces\Services\IServicePlataforma.cs" />
-    <Compile Include="Interfaces\Services\IServiceJogador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resource\Message.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Message.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Services\ServiceJogador.cs" />
-    <Compile Include="ValueObjects\Email.cs" />
-    <Compile Include="ValueObjects\Nome.cs" />
+    <Compile Include="Unity\DependencyResolver.cs" />
+    <Compile Include="Unity\UnityResolver.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resource\Message.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Message.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <ProjectReference Include="..\Infrastructure\XGames.Infrastructure.csproj">
+      <Project>{54CBF046-206C-4BCF-B32E-1A44C0284211}</Project>
+      <Name>XGames.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XGames.Domain\XGames.Domain.csproj">
+      <Project>{469BB8AB-DCEF-469B-8BCD-1357FEAAC30A}</Project>
+      <Name>XGames.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
